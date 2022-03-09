@@ -26,18 +26,21 @@ public class HandsTouching : MonoBehaviour
     {
         // check if hands is touching object
         // count the number of hands touching if 
-        if (collision.gameObject.name == "HandLeft" || collision.gameObject.name == "HandRight") {
-            if (count < 2) {
+        if (collision.gameObject.name == "HandLeft" || collision.gameObject.name == "HandRight") 
+        {
+            if (count < 2) 
+            {
                 count += 1; 
             }
             switch (count)
             {
                 case 1:
                     Debug.Log("One hand touching");
-                    speed = 0.1F;
+                    // do something
                     break;
                 case 2: 
                     Debug.Log("Two hands touching");
+                    // change particle speed rate
                     speed = 0.1F;
                     break;
             }
@@ -46,8 +49,10 @@ public class HandsTouching : MonoBehaviour
 
     void OnTriggerExit(UnityEngine.Collider collision)
     {
-        if (collision.gameObject.name == "HandLeft" || collision.gameObject.name == "HandRight") {
-            if (count > 0) {
+        if (collision.gameObject.name == "HandLeft" || collision.gameObject.name == "HandRight") 
+        {
+            if (count > 0) 
+            {
                 count -= 1; 
             }
             speed = 1.0F;
