@@ -4,7 +4,7 @@
 
 #### Your life is only as private as the rest of the internet cares
 
-Interactive Kinect/Unity based art installment and game 
+Interactive Kinect/Unity based art installation and game 
 
 
 
