@@ -51,3 +51,8 @@ ehthumbs.db
 # ======= #
 *__NoVersionControl*
 Assets/Plugins*
+
+
+*.meta
+*.log
+**/node_modules
