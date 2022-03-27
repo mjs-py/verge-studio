@@ -19,6 +19,7 @@ public class PlaneGenerator : MonoBehaviour
 	[SerializeField]
 	private int h = 844/2;
 
+
 	[SerializeField]
 	private float pitch = .01f;
 
@@ -33,9 +34,11 @@ public class PlaneGenerator : MonoBehaviour
 		mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
 
 		Vector3[] vertices = new Vector3[w * h];
+		
 		for (var y = 0; y < h; y++)
 		{
 			for (var x = 0; x < w; x++)
+
 			{
 				vertices[y * w + x] = new Vector3((float)(x - w / 2) * pitch, (float)(y - h / 2) * pitch, 0f);
 			}

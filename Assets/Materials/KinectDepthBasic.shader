@@ -78,13 +78,13 @@ Shader "Custom/KinectDepthBasic"
 				
 				// check posiiton on point
 				if (i.vertex.z > 0.0006) 
-                		{
+                {
 					
 					col = _Color;
 				}
 				// discard if not close enough
 				else 
-                		{
+                {
 					discard;	
 				}
 				
