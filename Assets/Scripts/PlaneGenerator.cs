@@ -38,7 +38,6 @@ public class PlaneGenerator : MonoBehaviour
 		for (var y = 0; y < h; y++)
 		{
 			for (var x = 0; x < w; x++)
-
 			{
 				vertices[y * w + x] = new Vector3((float)(x - w / 2) * pitch, (float)(y - h / 2) * pitch, 0f);
 			}
