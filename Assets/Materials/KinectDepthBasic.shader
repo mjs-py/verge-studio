@@ -50,7 +50,7 @@ Shader "Custom/KinectDepthBasic"
 
 				float3 test = v.vertex.xyz;
 				// expand the points to space with depth coordinate data
-				v.vertex.x = v.vertex.x * d / 3.656;
+				v.vertex.x = -v.vertex.x * d / 3.656;
 				v.vertex.y = v.vertex.y * d / 3.656;
 				v.vertex.z = d;	
 				
