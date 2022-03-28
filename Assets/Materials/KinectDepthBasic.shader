@@ -1,7 +1,5 @@
-﻿//////////////////////////////////////////////////////////////////////////////
-// SPECIAL THANKS TO https://github.com/izmhr/KinectV2DepthPoints for the   //
-// CODE [now modified] AND INSPIRATION                                      //
-//////////////////////////////////////////////////////////////////////////////
+﻿// SPECIAL THANKS TO https://github.com/izmhr/KinectV2DepthPoints for the   
+// CODE [now modified] AND INSPIRATION                                      
 
 Shader "Custom/KinectDepthBasic"
 {
@@ -9,8 +7,8 @@ Shader "Custom/KinectDepthBasic"
 	{
 		_MainTex("Texture", 2D) = "white" {}
 		_Displacement("Displacement", Range(0, 0.1)) = 0.003
-		_Color("Particle Color", Color) = (1,0,1,1)
-		
+		_BaseColor("Base Color", Color) = (0,0,0,0)
+		_TempColor("Temp Color", Color) = (0,0,0,0)
 	}
 	SubShader
 	{
@@ -38,11 +36,10 @@ Shader "Custom/KinectDepthBasic"
 			};
 
 			sampler2D _MainTex;
-			float _Displacement;
-			fixed4 _Color;
-
 			float4 _MainTex_ST;
-
+			float _Displacement;
+			fixed4 _BaseColor;
+			fixed4 _TempColor;
 
 			v2f vert(appdata v)
 			{
@@ -51,11 +48,12 @@ Shader "Custom/KinectDepthBasic"
 	
 				float d = col.x * 1500 * _Displacement;
 
+				float3 test = v.vertex.xyz;
 				// expand the points to space with depth coordinate data
-				v.vertex.x = v.vertex.x * d / 3.656;
+				v.vertex.x = -v.vertex.x * d / 3.656;
 				v.vertex.y = v.vertex.y * d / 3.656;
-				v.vertex.z = d;		
-			
+				v.vertex.z = d;	
+				
 				// transform the mesh to pass to vertex shader
 				v2f o;
 				o.vertex = UnityObjectToClipPos(v.vertex);
@@ -72,15 +70,14 @@ Shader "Custom/KinectDepthBasic"
 
 				// texture color
 				//fixed4 col2 = tex2D(_MainTex, i.uv);
-				
 				// predefined color
 				//col = _Color;
 				
-				// check posiiton on point
+				// check positon on point
 				if (i.vertex.z > 0.0006) 
                 {
-					
-					col = _Color;
+					float pct = abs(sin(_Time * 7));
+					col = _BaseColor * (1 - pct) + _TempColor * pct;
 				}
 				// discard if not close enough
 				else 

@@ -1,7 +1,5 @@
-﻿//////////////////////////////////////////////////////////////////////////////
-// SPECIAL THANKS TO https://github.com/izmhr/KinectV2DepthPoints for the   //
-// CODE [now modified] AND INSPIRATION                                                     //
-//////////////////////////////////////////////////////////////////////////////
+﻿// SPECIAL THANKS TO https://github.com/izmhr/KinectV2DepthPoints for the   
+// CODE [now modified] AND INSPIRATION                                                    
 
 using System;
 using UnityEngine;
@@ -37,7 +35,6 @@ public class DepthSourceManagerMy : MonoBehaviour
 			//_RawDataPre = new byte[frameDesc.LengthInPixels * 2];
 			_RawData = new byte[frameDesc.LengthInPixels * 2];
 			
-	
 			_Texture = new Texture2D(frameDesc.Width, frameDesc.Height, TextureFormat.R16, false);
 			if (!_Sensor.IsOpen)
 			{
@@ -70,7 +67,6 @@ public class DepthSourceManagerMy : MonoBehaviour
 				_Texture.LoadRawTextureData(_RawData);
 				_Texture.Apply();
 				
-
 				frame.Dispose();
 				frame = null;
 			}
